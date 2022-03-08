@@ -29,83 +29,191 @@
     </v-app-bar>
 
     <v-main>
-      <v-container>
-        <v-layout row wrap>
-          <v-flex lg-6 md-6>
-            <InputCard />
-          </v-flex>
-          <v-flex lg-6 md-6>
-            <InputCard />
-          </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex lg-6 md-6>
-            <InputCard />
-          </v-flex>
-          <v-flex lg-6 md-6>
-            <InputCard />
-          </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex lg-6 md-6>
-            <InputCard />
-          </v-flex>
-          <v-flex lg-6 md-6>
-            <InputCard />
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <div class="div-container">
+        <v-container fluid>
+          <v-layout row-9>
+            <v-flex
+              v-for="index in list1"
+              v-bind:key="index"
+            >
+              <v-card elevation="3" class="card">
+                <div class="subtitle">
+                  <div class="input">
+                    <v-text-field
+                      label="Username"
+                      type="text"
+                      id="username"
+                      name="username"
+                      v-model="index.username"
+                    />
+                  </div>
+                  <v-text-field
+                    label="Email"
+                    type="email"
+                    id="email"
+                    name="email"
+                    v-model="index.email"
+                  />
+                </div>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="add(list1)" color="success" class="button"
+                    >Add</v-btn
+                  >
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="remove(index,list1)" color="error">Remove</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+           <v-layout row-9>
+            <v-flex
+              v-for="index in list2"
+              v-bind:key="index"
+            >
+              <v-card elevation="3" class="card">
+                <div class="subtitle">
+                  <div class="input">
+                    <v-text-field
+                      label="Username"
+                      type="text"
+                      id="username"
+                      name="username"
+                      v-model="index.username"
+                    />
+                  </div>
+                  <v-text-field
+                    label="Email"
+                    type="email"
+                    id="email"
+                    name="email"
+                    v-model="index.email"
+                  />
+                </div>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="add(list2)" color="success" class="button"
+                    >Add</v-btn
+                  >
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="remove(index,list2)" color="error">Remove</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+           <v-layout row-9>
+            <v-flex
+              v-for="index in list3"
+              v-bind:key="index"
+            >
+              <v-card elevation="3" class="card">
+                <div class="subtitle">
+                  <div class="input">
+                    <v-text-field
+                      label="Username"
+                      type="text"
+                      id="username"
+                      name="username"
+                      v-model="index.username"
+                    />
+                  </div>
+                  <v-text-field
+                    label="Email"
+                    type="email"
+                    id="email"
+                    name="email"
+                    v-model="index.email"
+                  />
+                </div>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="add(list3)" color="success" class="button"
+                    >Add</v-btn
+                  >
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="remove(index,list3)" color="error">Remove</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import InputCard from "./components/Input-Card.vue";
-
 export default {
   name: "App",
-  components: {
-    InputCard,
+  data: () => ({
+    lg: 12,
+    list1: [
+      {
+        username: "",
+        email: "",
+      },
+    ],
+    list2: [
+      {
+        username: "",
+        email: "",
+      },
+    ],
+    list3: [
+      {
+        username: "",
+        email: "",
+      },
+    ],
+  }),
+  methods: {
+    add: function (list) {
+      if(list.length>=9)
+      {
+        alert("You can't add more than 9 Cards");
+        return;
+      }
+      list.push({
+        username: "",
+        email: "",
+      });
+    },
+    remove: function (index,list) {
+      list.splice(list.indexOf(index), 1);
+    },
   },
 };
 </script>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.subtitle {
+  /* height: 10px; */
+  height: 170px;
+  padding: 5px 10%;
+  align-items: center;
 }
 .card {
-  background-color: #ecf0f1;
-  border-radius: 4px;
-  margin: 0 auto;
-  padding: 0 20px 20px;
-  width: 360px;
-  margin-top: 20px;
+  height: 275px;
+  width: 100%;
+  margin: 5px 5px;
 }
-input {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1em;
-  padding: 10px;
-  margin: 10px 5px;
-  border: 0;
-  border-bottom: 1px solid #757575;
+.v-card {
+  width: 100%;
+  margin: 10px 10px;
 }
-button {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1em;
-  padding: 10px;
-  margin: 10px 5px;
-  border: 0;
-  border-radius: 3px;
-  background-color: #3498db;
-  color: #ecf0f1;
+.div-container {
+  background-color: aqua;
 }
-#remove {
-  background-color: #e74c3c;
-} */
 </style>
