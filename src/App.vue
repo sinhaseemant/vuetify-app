@@ -2,9 +2,9 @@
   <v-app>
     <v-main>
       <div class="div-container">
-        <v-container fluid>
-          <v-layout row-9>
-            <v-flex v-for="index in firstRowList" v-bind:key="index">
+        <v-container pe-6 style="min-width: 100vw;">
+          <v-layout row-5>
+            <v-flex ms-3  v-for="index in firstRowList" v-bind:key="index">
               <v-card elevation="3" class="card">
                 <div class="subtitle">
                   <div class="input">
@@ -59,7 +59,7 @@
             </v-flex>
           </v-layout>
           <v-layout row-9>
-            <v-flex v-for="index in secondRowList" v-bind:key="index">
+            <v-flex ms-3 v-for="index in secondRowList" v-bind:key="index">
               <v-card elevation="3" class="card">
                 <div class="subtitle">
                   <div class="input">
@@ -114,7 +114,7 @@
             </v-flex>
           </v-layout>
           <v-layout row-9>
-            <v-flex v-for="index in thirdRowList" v-bind:key="index">
+            <v-flex ms-3 v-for="index in thirdRowList" v-bind:key="index">
               <v-card elevation="3" class="card">
                 <div class="subtitle">
                   <div class="input">
@@ -236,5 +236,6 @@ export default {
   background-color: aqua;
   height:100vh;
   overflow: hidden;
+  
 }
 </style>
